@@ -143,6 +143,10 @@ void loop() {
     EMAADC();
     RSemaforoT();
     estadoBoton = 0;
+    io.run(); //corre correctamente el servisio del protocolo
+    Serial.print("sending -> ");
+    Serial.println(temperatura);
+    adcfeed->save(temperatura);
   }
   correrDisplay();
 //**********************************************************************************************************************
