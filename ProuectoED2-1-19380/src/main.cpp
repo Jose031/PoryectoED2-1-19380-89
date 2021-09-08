@@ -89,4 +89,26 @@ void configurarPWM(void)
 
   jjjjjjjj
 void RSemaforoT(void)
+{
+  if (temperatura < 37.0)
+  {
+    ledcWrite(pwmChservo, 27); // Función que permite alterar el PWM de servo
+    ledcWrite(pwmChledR, 0);
+    ledcWrite(pwmChledA, 0);
+    ledcWrite(pwmChledV, 200);
+  }
+  if (temperatura >= 37.0)
+  {
+    ledcWrite(pwmChservo, 17); // Función que permite alterar el PWM
+    ledcWrite(pwmChledR, 0);
+    ledcWrite(pwmChledA, 200);
+    ledcWrite(pwmChledV, 0);
+  }
+  if (temperatura > 37.5)
+  {                           // Condición que establece que el PWM de los 4 elementos sera 0.
+    ledcWrite(pwmChservo, 7); // Función que permite alterar el PWM
+    ledcWrite(pwmChledR, 200);
+    ledcWrite(pwmChledA, 0);
+    ledcWrite(pwmChledV, 0);
+  }
 }
