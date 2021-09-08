@@ -49,9 +49,13 @@ void EMAADC(void);
 void configurarPWM(void);
 void RSemaforoT(void);
 void correrDisplay(void);
+void configurarTimer(void); //Definición de función  Timer
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
+//Paso 1: Instanciar el timer
+hw_timer_t *timer = NULL;
+
 int adcRaw = 0;
 int estadoBoton = 0;
 double adcFiltradoT = 0; // S(0) = Y(0)
@@ -67,6 +71,13 @@ void IRAM_ATTR ISRB1()
 {
   estadoBoton = 1;
 }
+void IRAM_ATTR ISRTimer0()
+{
+  contadorTimer++;
+  if (contadorTimer > 2)
+  { // Se establece está condición para que el contador no se mayor a 15
+    contadorTimer = 0;
+  }
 }
 //**********************************************************************************************************************
 // Configuracion
@@ -121,6 +132,27 @@ void configurarPWM(void)
   ledcAttachPin(ledR, pwmChledR);
   ledcAttachPin(ledA, pwmChledA);
   ledcAttachPin(ledV, pwmChledV);
+}
+void configurarTimer(void)
+{
+  //Fosc = 80 MHz = 80,000 Hz
+  //Fosc / Prescaler (Se puede poner culaquier valor que este entre 16B) = 80M/80 = 1 MHz
+  //Tosc = 1/Fosc = 1 uS
+
+  //Paso 2: Selleccionar Timer
+  //Timer 0, prescaler = 80, Flanco de Subida
+  timer = timerBegin(0, prescaler, true);
+
+  //Paso 3: Asignar el handler de la interrupcion
+  timerAttachInterrupt(timer, &ISRTimer0, true);
+
+  //Paso 4: Programar alarma
+  // Tic =  1 uS
+  // Frecuencia = Se necessita 5 msS = 5,000 Tics
+  timerAlarmWrite(timer, 5000, true);
+
+  //Paso 5: Iniciar Alarma
+  timerAlarmEnable(timer);
 }
 
   jjjjjjjj
