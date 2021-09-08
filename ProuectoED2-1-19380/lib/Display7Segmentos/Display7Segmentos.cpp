@@ -150,3 +150,15 @@ void desplegar7Segmentos(uint8_t digito)
         break;
     }
 }
+//Funcion para desplegar el punto en el display de 7 segmentos
+void desplegarPunto(boolean punto)
+{
+    if (punto == 1)
+    {
+        digitalWrite(pindisplaydP, HIGH);
+    }
+    else
+    {
+        digitalWrite(pindisplaydP, LOW);
+    }
+}
