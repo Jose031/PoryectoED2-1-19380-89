@@ -57,6 +57,9 @@ int estadoBoton = 0;
 double adcFiltradoT = 0; // S(0) = Y(0)
 double alpha = 0.09;     // Factor de suavizado (0-1)
 float temperatura = 0.0;
+int decenas = 0;
+int unidades = 0;
+int decimal = 0;
 //**********************************************************************************************************************
 // ISR: Interrupciones
 //**********************************************************************************************************************
@@ -96,6 +99,9 @@ void loop() {
 //**********************************************************************************************************************
 void correrDisplay(void)
 
+  decenas = ((temperatura) * (10)) / (100);
+  unidades = ((temperatura * 10) - (decenas * 100)) / 10;
+  decimal = ((temperatura * 10) - (decenas * 100)) - (unidades * 10);
 void EMAADC(void)
 {
   adcRaw = analogReadMilliVolts(SensorT);
