@@ -9,6 +9,7 @@
 // Librerías
 //**********************************************************************************************************************
 #include <Arduino.h>
+#include "Display7Segmentos.h"
 //**********************************************************************************************************************
 // Defincion de Pines
 //**********************************************************************************************************************
@@ -47,6 +48,7 @@ void setup() {
 void EMAADC(void);
 void configurarPWM(void);
 void RSemaforoT(void);
+void correrDisplay(void);
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
@@ -70,6 +72,12 @@ void IRAM_ATTR ISRB1()
 
 void loop() {
   // put your main code here, to run repeatedly:
+  pinMode(display1, OUTPUT);
+  pinMode(display2, OUTPUT);
+  pinMode(display3, OUTPUT);
+  digitalWrite(display1, 0);
+  digitalWrite(display2, 0);
+  digitalWrite(display3, 0);
   configurarPWM();
   attachInterrupt(Boton1, ISRB1, HIGH);
 //**********************************************************************************************************************
