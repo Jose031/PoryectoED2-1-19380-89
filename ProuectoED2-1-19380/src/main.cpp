@@ -13,6 +13,20 @@
 // Defincion de Pines
 //**********************************************************************************************************************
 
+#define ledR 14
+#define ledA 12
+#define ledV 13
+// Definición de la varaible de salida del servo motor con su respectivo pin
+#define pinPWMservo 4
+#define prescaler 80
+// Definción de varaibles para la configuración del PWM
+#define pwmChservo 0 // 16 Canales 0-15
+#define pwmChledR 1  // 16 Canales 0-15
+#define pwmChledA 2  // 16 Canales 0-15
+#define pwmChledV 3  // 16 Canales 0-15
+#define freqPWM 50   // Frecuencia en Hz
+#define resolucion 8 // 1-16 bits de resolucion
+
 void setup() {
   // put your setup code here, to run once:
 //**********************************************************************************************************************
