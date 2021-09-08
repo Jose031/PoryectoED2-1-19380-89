@@ -72,6 +72,7 @@ void IRAM_ATTR ISRB1()
 
 void loop() {
   // put your main code here, to run repeatedly:
+  configurarDisplay(pindisplayA, pindisplayB, pindisplayC, pindisplayD, pindisplayE, pindisplayF, pindisplayG, pindisplayDP);
   pinMode(display1, OUTPUT);
   pinMode(display2, OUTPUT);
   pinMode(display3, OUTPUT);
@@ -93,6 +94,7 @@ void loop() {
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
+void correrDisplay(void)
 
 void EMAADC(void)
 {
