@@ -29,6 +29,18 @@
 
 void setup() {
   // put your setup code here, to run once:
+// Defincion de las variables de los pines del display de 7 segmentos
+#define pindisplayA 5
+#define pindisplayB 16
+#define pindisplayC 33
+#define pindisplayD 26
+#define pindisplayE 27
+#define pindisplayF 17
+#define pindisplayG 32
+#define pindisplayDP 25
+#define display1 21
+#define display2 19
+#define display3 18
 //**********************************************************************************************************************
 // Prototipo de Funciones
 //**********************************************************************************************************************
