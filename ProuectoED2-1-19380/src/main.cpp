@@ -57,6 +57,7 @@ void IRAM_ATTR ISRB1()
 
 void loop() {
   // put your main code here, to run repeatedly:
+  configurarPWM();
   attachInterrupt(Boton1, ISRB1, HIGH);
 //**********************************************************************************************************************
 // LOOP
@@ -73,6 +74,18 @@ void EMAADC(void)
   Serial.println(temperatura);
   delay(100);
 void configurarPWM(void)
+{
+  // Paso 1: configurar PWM
+  ledcSetup(pwmChservo, freqPWM, resolucion);
+  ledcSetup(pwmChledR, 60, resolucion);
+  ledcSetup(pwmChledA, 60, resolucion);
+  ledcSetup(pwmChledV, 60, resolucion);
+  // Paso 2: Seleccionar en que GPIO tendremos nuestra onda PWM
+  ledcAttachPin(pinPWMservo, pwmChservo);
+  ledcAttachPin(ledR, pwmChledR);
+  ledcAttachPin(ledA, pwmChledA);
+  ledcAttachPin(ledV, pwmChledV);
+}
 
   jjjjjjjj
 void RSemaforoT(void)
