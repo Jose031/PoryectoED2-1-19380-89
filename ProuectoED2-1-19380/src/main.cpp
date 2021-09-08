@@ -38,7 +38,11 @@ void RSemaforoT(void);
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
+int adcRaw = 0;
 int estadoBoton = 0;
+double adcFiltradoT = 0; // S(0) = Y(0)
+double alpha = 0.09;     // Factor de suavizado (0-1)
+float temperatura = 0.0;
 //**********************************************************************************************************************
 // ISR: Interrupciones
 //**********************************************************************************************************************
@@ -62,6 +66,12 @@ void loop() {
 //**********************************************************************************************************************
 
 void EMAADC(void)
+{
+  adcRaw = analogReadMilliVolts(SensorT);
+  adcFiltradoT = (alpha * adcRaw) + ((1.0 - alpha) * adcFiltradoT);
+  temperatura = (adcFiltradoT / 10.0);
+  Serial.println(temperatura);
+  delay(100);
 void configurarPWM(void)
 
   jjjjjjjj
