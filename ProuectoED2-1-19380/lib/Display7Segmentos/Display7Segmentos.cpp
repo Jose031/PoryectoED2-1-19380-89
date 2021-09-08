@@ -46,3 +46,107 @@ void configurarDisplay(uint8_t pinA, uint8_t pinB, uint8_t pinC, uint8_t pinD, u
     digitalWrite(pindisplayG, LOW);
     digitalWrite(pindisplaydP, LOW);
 }
+//Funcion para desplegar el digito en el display de 7 segmentos
+void desplegar7Segmentos(uint8_t digito)
+{
+    switch (digito)
+    {
+    case 0:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 1);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 0);
+        break;
+    case 1:
+        digitalWrite(pindisplayA, 0);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 0);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 0);
+        digitalWrite(pindisplayG, 0);
+
+        break;
+    case 2:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 0);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 1);
+        digitalWrite(pindisplayF, 0);
+        digitalWrite(pindisplayG, 1);
+        break;
+    case 3:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 0);
+        digitalWrite(pindisplayG, 1);
+        break;
+
+    case 4:
+        digitalWrite(pindisplayA, 0);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 0);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 1);
+        break;
+    case 5:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 0);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 1);
+        break;
+    case 6:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 0);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 1);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 1);
+        break;
+    case 7:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 0);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 0);
+        digitalWrite(pindisplayG, 0);
+        break;
+
+    case 8:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 1);
+        digitalWrite(pindisplayE, 1);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 1);
+        break;
+
+    case 9:
+        digitalWrite(pindisplayA, 1);
+        digitalWrite(pindisplayB, 1);
+        digitalWrite(pindisplayC, 1);
+        digitalWrite(pindisplayD, 0);
+        digitalWrite(pindisplayE, 0);
+        digitalWrite(pindisplayF, 1);
+        digitalWrite(pindisplayG, 1);
+        break;
+
+    default:
+        break;
+    }
+}
