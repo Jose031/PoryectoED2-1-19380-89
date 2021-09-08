@@ -116,6 +116,22 @@ void loop() {
   digitalWrite(display1, 0);
   digitalWrite(display2, 0);
   digitalWrite(display3, 0);
+
+  /***************Adafruit io***********/
+  // start the serial connection
+
+  Serial.print("Connecting to Adafruit IO");
+  // connect to io.adafruit.com
+  io.connect();
+  // wait for a connection
+  while (io.status() < AIO_CONNECTED)
+  {
+  }
+  // we are connected 
+  Serial.println();
+  Serial.println(io.statusText());
+  /*************************************/
+
   configurarPWM();
   attachInterrupt(Boton1, ISRB1, HIGH);
 //**********************************************************************************************************************
