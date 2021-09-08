@@ -10,6 +10,29 @@
 //**********************************************************************************************************************
 #include <Arduino.h>
 #include "Display7Segmentos.h"
+#include "AdafruitIO_WiFi.h"
+
+//**********************************************************************************************************************
+// Configuracion adafruit io
+//**********************************************************************************************************************
+/************************ Adafruit IO Config *******************************/
+
+// visit io.adafruit.com if you need to create an account,
+// or if you need your Adafruit IO key.
+#define IO_USERNAME "Jose031"
+#define IO_KEY "aio_dYxi90roZhVCKfIj6OhbTNQ4cF9S"
+/******************************* WIFI **************************************/
+
+#define WIFI_SSID "TIGO-F36C"
+#define WIFI_PASS "Mendez2203"
+
+// comment out the following lines if you are using fona or ethernet
+#include "AdafruitIO_WiFi.h"
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
+
+AdafruitIO_Feed *adcfeed = io.feed("temperaturaADC");
+
+
 //**********************************************************************************************************************
 // Defincion de Pines
 //**********************************************************************************************************************
