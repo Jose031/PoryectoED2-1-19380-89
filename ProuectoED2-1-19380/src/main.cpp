@@ -105,6 +105,7 @@ void loop() {
     RSemaforoT();
     estadoBoton = 0;
   }
+  correrDisplay();
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
@@ -113,6 +114,31 @@ void correrDisplay(void)
   decenas = ((temperatura) * (10)) / (100);
   unidades = ((temperatura * 10) - (decenas * 100)) / 10;
   decimal = ((temperatura * 10) - (decenas * 100)) - (unidades * 10);
+  if (contadorTimer == 0)
+  {
+    digitalWrite(display1, 1);
+    digitalWrite(display2, 0);
+    digitalWrite(display3, 0);
+    desplegarPunto(0);
+    desplegar7Segmentos(decenas);
+  }
+  if (contadorTimer == 1)
+  {
+    digitalWrite(display1, 0);
+    digitalWrite(display2, 1);
+    digitalWrite(display3, 0);
+    desplegarPunto(1);
+    desplegar7Segmentos(unidades);
+  }
+  if (contadorTimer == 2)
+  {
+    digitalWrite(display1, 0);
+    digitalWrite(display2, 0);
+    digitalWrite(display3, 1);
+    desplegarPunto(0);
+    desplegar7Segmentos(decimal);
+  }
+}
 void EMAADC(void)
 {
   adcRaw = analogReadMilliVolts(SensorT);
